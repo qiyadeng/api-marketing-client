@@ -13,7 +13,7 @@ internal class FileCheckUploadProgram
 
     private static async Task Main()
     {
-        var url = Env("FILE_CHECK_UPLOAD_URL", "https://filecheck.market.alicloudapi.com/wordscheckFileCheck");
+        var url = Env("FILE_CHECK_UPLOAD_URL", "https://filecheck.market.alicloudapi.com/openapi/v1/file/check");
         var appcode = Env("ALIYUN_APPCODE", "YOUR_ALIYUN_APPCODE");
         var uploadFilePath = Env("UPLOAD_FILE_PATH", "demo.docx");
 

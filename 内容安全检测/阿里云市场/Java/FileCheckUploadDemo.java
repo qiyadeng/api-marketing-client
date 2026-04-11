@@ -15,7 +15,7 @@ public class FileCheckUploadDemo {
     }
 
     public static void main(String[] args) throws Exception {
-        String url = env("FILE_CHECK_UPLOAD_URL", "https://filecheck.market.alicloudapi.com/wordscheckFileCheck");
+        String url = env("FILE_CHECK_UPLOAD_URL", "https://filecheck.market.alicloudapi.com/openapi/v1/file/check");
         String appcode = env("ALIYUN_APPCODE", "YOUR_ALIYUN_APPCODE");
         String uploadFilePath = env("UPLOAD_FILE_PATH", "demo.docx");
         String boundary = "----CodexBoundary" + UUID.randomUUID().toString().replace("-", "");

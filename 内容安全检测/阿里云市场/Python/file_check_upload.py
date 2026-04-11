@@ -6,7 +6,7 @@ from urllib.request import Request, urlopen
 def main() -> None:
     url = os.getenv(
         "FILE_CHECK_UPLOAD_URL",
-        "https://filecheck.market.alicloudapi.com/wordscheckFileCheck",
+        "https://filecheck.market.alicloudapi.com/openapi/v1/file/check",
     )
     appcode = os.getenv("ALIYUN_APPCODE", "YOUR_ALIYUN_APPCODE")
     upload_file_path = os.getenv("UPLOAD_FILE_PATH", "demo.docx")
@@ -37,4 +37,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

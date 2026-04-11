@@ -5,10 +5,10 @@ function env_or_default($key, $default) {
     return $value === false || $value === '' ? $default : $value;
 }
 
-$url = env_or_default('TEXT_CHECK_URL', 'https://filecheck.market.alicloudapi.com/wordscheckTextCheck');
+$url = env_or_default('TEXT_CHECK_URL', 'https://filecheck.market.alicloudapi.com/openapi/v1/text/check');
 $appcode = env_or_default('ALIYUN_APPCODE', 'YOUR_ALIYUN_APPCODE');
 $checkText = env_or_default('CHECK_TEXT', 'This text will be checked for risky content.');
-$body = http_build_query(array('text' => $checkText));
+$body = json_encode(array('text' => $checkText), JSON_UNESCAPED_UNICODE);
 
 $ch = curl_init($url);
 curl_setopt_array($ch, array(
@@ -17,7 +17,7 @@ curl_setopt_array($ch, array(
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => array(
         'Authorization: APPCODE ' . $appcode,
-        'Content-Type: application/x-www-form-urlencoded'
+        'Content-Type: application/json'
     )
 ));
 

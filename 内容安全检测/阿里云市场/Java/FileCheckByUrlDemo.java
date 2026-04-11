@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URLEncoder;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -13,12 +12,13 @@ public class FileCheckByUrlDemo {
     }
 
     public static void main(String[] args) throws Exception {
-        String url = env("FILE_CHECK_BY_URL_URL", "https://filecheck.market.alicloudapi.com/wordscheckFileCheckByUrl");
+        String url = env("FILE_CHECK_BY_URL_URL", "https://filecheck.market.alicloudapi.com/openapi/v1/file/check-by-url");
         String appcode = env("ALIYUN_APPCODE", "YOUR_ALIYUN_APPCODE");
         String fileName = env("FILE_NAME", "demo.docx");
         String fileUrl = env("FILE_URL", "https://example.com/demo.docx");
-        String body = "fileName=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8.name())
-                + "&url=" + URLEncoder.encode(fileUrl, StandardCharsets.UTF_8.name());
+        String escapedFileName = fileName.replace("\\", "\\\\").replace("\"", "\\\"");
+        String escapedFileUrl = fileUrl.replace("\\", "\\\\").replace("\"", "\\\"");
+        String body = "{\"fileName\":\"" + escapedFileName + "\",\"url\":\"" + escapedFileUrl + "\"}";
 
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         connection.setRequestMethod("POST");
@@ -26,7 +26,7 @@ public class FileCheckByUrlDemo {
         connection.setReadTimeout(60000);
         connection.setDoOutput(true);
         connection.setRequestProperty("Authorization", "APPCODE " + appcode);
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        connection.setRequestProperty("Content-Type", "application/json");
 
         try (OutputStream os = connection.getOutputStream()) {
             os.write(body.getBytes(StandardCharsets.UTF_8));
@@ -43,4 +43,3 @@ public class FileCheckByUrlDemo {
         }
     }
 }
-

@@ -5,7 +5,7 @@ function env_or_default($key, $default) {
     return $value === false || $value === '' ? $default : $value;
 }
 
-$url = env_or_default('FILE_CHECK_UPLOAD_URL', 'https://filecheck.market.alicloudapi.com/wordscheckFileCheck');
+$url = env_or_default('FILE_CHECK_UPLOAD_URL', 'https://filecheck.market.alicloudapi.com/openapi/v1/file/check');
 $appcode = env_or_default('ALIYUN_APPCODE', 'YOUR_ALIYUN_APPCODE');
 $uploadFilePath = env_or_default('UPLOAD_FILE_PATH', 'demo.docx');
 
@@ -30,4 +30,3 @@ if ($response === false) {
 curl_close($ch);
 
 echo $response . PHP_EOL;
-

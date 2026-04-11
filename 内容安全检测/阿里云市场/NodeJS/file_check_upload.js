@@ -5,7 +5,7 @@ function env(name, fallback) {
 }
 
 async function main() {
-  const url = env("FILE_CHECK_UPLOAD_URL", "https://filecheck.market.alicloudapi.com/wordscheckFileCheck");
+  const url = env("FILE_CHECK_UPLOAD_URL", "https://filecheck.market.alicloudapi.com/openapi/v1/file/check");
   const appcode = env("ALIYUN_APPCODE", "YOUR_ALIYUN_APPCODE");
   const uploadFilePath = env("UPLOAD_FILE_PATH", "demo.docx");
 
@@ -27,4 +27,3 @@ main().catch((error) => {
   console.error(error);
   process.exit(1);
 });
-

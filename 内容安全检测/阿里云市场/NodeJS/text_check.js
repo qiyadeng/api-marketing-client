@@ -3,7 +3,7 @@ function env(name, fallback) {
 }
 
 async function main() {
-  const url = env("TEXT_CHECK_URL", "https://filecheck.market.alicloudapi.com/wordscheckTextCheck");
+  const url = env("TEXT_CHECK_URL", "https://filecheck.market.alicloudapi.com/openapi/v1/text/check");
   const appcode = env("ALIYUN_APPCODE", "YOUR_ALIYUN_APPCODE");
   const checkText = env("CHECK_TEXT", "This text will be checked for risky content.");
   const body = new URLSearchParams({ text: checkText });
@@ -12,9 +12,9 @@ async function main() {
     method: "POST",
     headers: {
       Authorization: `APPCODE ${appcode}`,
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
     },
-    body: body.toString(),
+    body: JSON.stringify({ text: checkText }),
   });
 
   console.log(await response.text());

@@ -5,14 +5,14 @@ function env_or_default($key, $default) {
     return $value === false || $value === '' ? $default : $value;
 }
 
-$url = env_or_default('FILE_CHECK_BY_URL_URL', 'https://filecheck.market.alicloudapi.com/wordscheckFileCheckByUrl');
+$url = env_or_default('FILE_CHECK_BY_URL_URL', 'https://filecheck.market.alicloudapi.com/openapi/v1/file/check-by-url');
 $appcode = env_or_default('ALIYUN_APPCODE', 'YOUR_ALIYUN_APPCODE');
 $fileName = env_or_default('FILE_NAME', 'demo.docx');
 $fileUrl = env_or_default('FILE_URL', 'https://example.com/demo.docx');
-$body = http_build_query(array(
+$body = json_encode(array(
     'fileName' => $fileName,
     'url' => $fileUrl
-));
+), JSON_UNESCAPED_UNICODE);
 
 $ch = curl_init($url);
 curl_setopt_array($ch, array(
@@ -21,7 +21,7 @@ curl_setopt_array($ch, array(
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => array(
         'Authorization: APPCODE ' . $appcode,
-        'Content-Type: application/x-www-form-urlencoded'
+        'Content-Type: application/json'
     )
 ));
 
@@ -32,4 +32,3 @@ if ($response === false) {
 curl_close($ch);
 
 echo $response . PHP_EOL;
-
