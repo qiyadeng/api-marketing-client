@@ -1,0 +1,27 @@
+# Build outputs
+bin/
+obj/
+target/
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+
+# Java / .NET artifacts
+*.class
+*.exe
+*.pdb
+*.dll
+*.cache
+
+# Archives
+*.zip
+*.rar
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
