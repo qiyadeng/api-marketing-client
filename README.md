@@ -1,27 +1,96 @@
-# API Client Samples
+# API 营销示例客户端
 
-This repository is now organized as:
+这个仓库用于展示两个 API 的调用示例，并按“功能 -> 云市场平台 -> 语言”三级目录统一整理，方便客户直接找到对应示例。
 
-- Level 1: API capability, such as `发票抬头查询` and `文件转换`
-- Level 2: marketplace platform, such as `腾讯云市场` and `阿里云市场`
-- Level 3: language, such as `Java`, `Python`, `PHP`, `NodeJS`, and `CSharp`
+## 目录结构
 
-Legacy samples were preserved under `./_legacy` and `./<功能>/_legacy`.
+- 第一级：API 功能
+  - `发票抬头查询`
+  - `文件转换`
+- 第二级：云市场平台
+  - `腾讯云市场`
+  - `阿里云市场`
+- 第三级：编程语言
+  - `Java`
+  - `Python`
+  - `PHP`
+  - `NodeJS`
+  - `CSharp`
 
-Each language folder contains one runnable sample file.
+后续如果新增第三个 API，可以继续按照同样结构扩展，例如：
 
-Recommended environment variables:
+- `新功能/腾讯云市场/Java`
+- `新功能/阿里云市场/Python`
+- `新功能/腾讯云市场/CSharp`
 
-- Tencent marketplace:
-  - `TENCENT_SECRET_ID`
-  - `TENCENT_SECRET_KEY`
-  - `TENCENT_SOURCE` default: `market`
-- Aliyun marketplace:
-  - `ALIYUN_APPCODE`
-- Common request values:
-  - `API_URL`
-  - `INVOICE_NAME`
-  - `FILE_NAME`
-  - `FILE_URL`
-  - `CALLBACK_URL`
+## 当前包含的接口
 
+### 1. 发票抬头查询
+
+用户传入发票抬头名称，接口返回企业相关信息，例如：
+
+- 纳税人识别号
+- 地址
+- 电话
+- 开户行
+- 银行账号
+
+### 2. 文件转换
+
+用户传入原始文件地址和文件名，接口将文件转换为 PDF，并返回对应结果。
+
+## 鉴权方式
+
+### 腾讯云市场
+
+腾讯云市场示例统一使用 HMAC 鉴权，示例中会用到：
+
+- `TENCENT_SECRET_ID`
+- `TENCENT_SECRET_KEY`
+- `TENCENT_SOURCE`
+
+默认 `TENCENT_SOURCE=market`。
+
+### 阿里云市场
+
+阿里云市场示例统一使用 `APPCODE` 鉴权，示例中会用到：
+
+- `ALIYUN_APPCODE`
+
+## 通用环境变量
+
+不同示例会按需使用以下环境变量：
+
+- `API_URL`
+- `INVOICE_NAME`
+- `FILE_NAME`
+- `FILE_URL`
+- `CALLBACK_URL`
+
+## 使用方式
+
+1. 进入对应功能目录
+2. 选择对应平台目录
+3. 选择对应语言目录
+4. 按示例代码中的环境变量配置自己的参数
+5. 运行示例
+
+例如：
+
+- `发票抬头查询/腾讯云市场/Python/client.py`
+- `文件转换/阿里云市场/Java/ClientDemo.java`
+
+## 历史代码说明
+
+历史示例代码已保留，方便回溯和对比：
+
+- 仓库根目录旧代码：`_legacy`
+- 各功能目录的旧结构：已并入新的统一结构，不再作为主入口使用
+
+这些历史代码不会影响当前新的示例结构。
+
+## 说明
+
+- 腾讯云市场示例中保留了现有可用的默认接口地址
+- 阿里云市场示例中使用的是占位地址，实际使用时请替换为你们在阿里云市场对应的真实网关地址
+- Java 示例已尽量使用兼容性更高的写法，方便客户直接参考
