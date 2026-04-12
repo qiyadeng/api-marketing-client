@@ -25,3 +25,6 @@ __pycache__/
 Thumbs.db
 .idea/
 .vscode/
+
+# Local private delivery files (do not publish)
+_private_delivery/
