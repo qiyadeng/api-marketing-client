@@ -22,7 +22,9 @@
 
 ### 2. 文件转换
 
-将 Word、Excel、PPT、图片等文件转换为 PDF，适合文档归档、在线预览、合同流转、资料上传和办公自动化场景。
+将 Word、Excel、PPT、图片等文件转换为 PDF，适合文档归档、在线预览、合同流转、资料上传和办公自动化场景。Office 文件转 PDF 基于微软 Office 能力，复杂排版、表格、页眉页脚会尽量贴近在 Word 里打开时的效果。具体商品页见下方「云市场产品链接」。
+
+Office-to-PDF uses Microsoft Office so layout, tables, and headers stay close to Word.
 
 ### 3. 内容安全检测
 
